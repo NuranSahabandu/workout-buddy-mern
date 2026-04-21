@@ -17,7 +17,7 @@ app.use(express.json())
 
 
 app.use(cors({
-  origin: "https://your-frontend.vercel.app",
+  origin: "https://workout-buddy-mern-six.vercel.app",
   credentials: true
 }));
 
