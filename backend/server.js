@@ -4,6 +4,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const workoutRoutes = require('./routes/workouts')
 const userRoutes = require('./routes/user')
+const cors = require('cors')
 
 
 // express app
@@ -11,6 +12,15 @@ const app = express()
 
 // middleware
 app.use(express.json())
+
+// cors configuration
+const cors = require("cors");
+
+app.use(cors({
+  origin: "https://your-frontend.vercel.app",
+  credentials: true
+}));
+
 
 app.use((req, res, next) => {
     console.log(req.path, req.method)
