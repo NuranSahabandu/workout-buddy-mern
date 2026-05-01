@@ -16,10 +16,7 @@ app.use(express.json())
 // cors configuration
 
 
-app.use(cors({
-  origin: "https://workout-buddy-mern-six.vercel.app",
-  credentials: true
-}));
+app.use(cors());
 
 
 app.use((req, res, next) => {

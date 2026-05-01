@@ -124,10 +124,18 @@ nav button {
 }
 
 /* auth forms */
-form.signup, form.login {
+form.signup, form.login, form.profile {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
   background: #fff;
   border-radius: 4px;
+}
+div.success {
+  padding: 10px;
+  background: #efffef;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  border-radius: 4px;
+  margin: 20px 0;
 }
