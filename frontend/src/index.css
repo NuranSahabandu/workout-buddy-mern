@@ -139,3 +139,59 @@ div.success {
   border-radius: 4px;
   margin: 20px 0;
 }
+
+/* responsive: tablet and below */
+@media (max-width: 768px) {
+  header .container {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 16px;
+  }
+  header .container h1 {
+    margin: 0;
+  }
+  .pages {
+    padding: 16px;
+  }
+  .home {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  nav > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  nav a,
+  nav button {
+    margin-left: 0;
+  }
+  form.signup,
+  form.login,
+  form.profile {
+    margin: 20px auto;
+  }
+}
+
+/* responsive: small phones */
+@media (max-width: 480px) {
+  header .container h1 {
+    font-size: 1.4em;
+  }
+  .workout-details {
+    padding: 16px;
+  }
+  .workout-details span {
+    top: 12px;
+    right: 12px;
+  }
+  .workout-details h4 {
+    padding-right: 36px;
+  }
+  form.signup,
+  form.login,
+  form.profile {
+    padding: 16px;
+  }
+}
