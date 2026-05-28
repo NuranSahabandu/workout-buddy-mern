@@ -4,13 +4,16 @@ import './index.css'
 import App from './App.jsx'
 import { WorkoutsContextProvider } from './context/WorkoutContext.jsx'
 import { AuthContextProvider } from './context/AuthContext.jsx'
+import { ThemeContextProvider } from './context/ThemeContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthContextProvider>
-      <WorkoutsContextProvider>
-        <App />
-      </WorkoutsContextProvider>
-    </AuthContextProvider>
+    <ThemeContextProvider>
+      <AuthContextProvider>
+        <WorkoutsContextProvider>
+          <App />
+        </WorkoutsContextProvider>
+      </AuthContextProvider>
+    </ThemeContextProvider>
   </StrictMode>,
 )
