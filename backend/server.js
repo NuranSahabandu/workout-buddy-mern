@@ -33,6 +33,9 @@ app.get('/', (req, res) => {
 */
 
 // routes
+app.get('/', (req, res) => {
+    res.json({ status: 'OK', message: 'Workout Buddy API is running' })
+})
 app.use('/api/workouts', workoutRoutes) 
 app.use('/api/user', userRoutes) 
 
@@ -40,8 +43,9 @@ app.use('/api/user', userRoutes)
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
     // listen for requests
-    app.listen(process.env.PORT, () => {
-        console.log('connected to db & listening on port', process.env.PORT)
+    const PORT = process.env.PORT || 4000
+    app.listen(PORT, () => {
+        console.log('connected to db & listening on port', PORT)
     });
     })
     .catch((error) => {
