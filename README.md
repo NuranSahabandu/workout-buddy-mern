@@ -20,7 +20,8 @@ A full-stack MERN app for logging and tracking personal workouts. Authenticated 
 
 **Frontend** — React, Vite, React Router, Context API, date-fns  
 **Backend** — Node.js, Express, MongoDB, Mongoose, JWT, bcrypt  
-**Deployment** — Vercel (frontend), Render (backend)
+**Deployment** — Vercel (frontend), Render (backend)  
+**Containerisation** — Docker, Docker Compose
 
 ---
 
@@ -28,13 +29,16 @@ A full-stack MERN app for logging and tracking personal workouts. Authenticated 
 
 ```
 workout-buddy-mern/
+├── docker-compose.yaml
 ├── backend/
+│   ├── Dockerfile
 │   ├── controllers/      # workoutController, userController
 │   ├── middleware/        # requireAuth (JWT verification)
 │   ├── models/           # WorkoutModel, userModel
 │   ├── routes/           # workouts.js, user.js
 │   └── server.js
 └── frontend/
+    ├── Dockerfile
     └── src/
         ├── components/   # Navbar, WorkoutDetails, WorkoutForm
         ├── context/      # AuthContext, WorkoutContext
@@ -50,6 +54,7 @@ workout-buddy-mern/
 
 - Node.js v18+
 - MongoDB Atlas account
+- Docker and Docker Compose (for the containerised setup)
 
 ### Backend
 
@@ -86,6 +91,25 @@ VITE_API_URL=http://localhost:4000
 ```bash
 npm run dev
 ```
+
+### Run with Docker
+
+An alternative to running the backend and frontend manually. Both services are orchestrated via `docker-compose.yaml`.
+
+1. Create `backend/.env` (same variables as above — the backend container reads it directly via `env_file`).
+
+2. From the project root:
+
+```bash
+docker compose up --build
+```
+
+- Backend: `http://localhost:4000`
+- Frontend: `http://localhost:5173`
+
+`VITE_API_URL` is passed to the frontend container as a build argument (hardcoded to `http://localhost:4000` in `docker-compose.yaml`) — no `frontend/.env` is needed when running via Docker.
+
+> **Windows note:** The named volume mounts (`./frontend:/app` and `./backend:/app`) can cause issues on Windows. If you hit permission or sync problems, remove the volume entries from `docker-compose.yaml` and rebuild.
 
 ---
 
